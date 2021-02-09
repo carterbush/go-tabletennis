@@ -11,8 +11,12 @@ namespace go_tabletennis
 {
     public class Program
     {
+        public static IStore Store { get; private set; }
+
         public static void Main(string[] args)
         {
+            Program.Store = go_tabletennis.Store.Create();
+
             CreateHostBuilder(args).Build().Run();
         }
 
