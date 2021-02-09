@@ -12,7 +12,7 @@ const BackButton = styled.button`
     color: ${props => props.theme.colors.lightashgray};
     font-size: 32px;
     border-radius: 50px;
-    border: none;
+    border: 2px solid ${props => props.theme.colors.mediumashgray};
     margin: 8px;
 
     :hover {

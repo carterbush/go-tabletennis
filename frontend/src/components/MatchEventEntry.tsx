@@ -20,6 +20,11 @@ const Column = styled.div`
     align-items: center;
 `
 
+const Subheading = styled.h2`
+    padding: 0;
+    margin: 25px 0 10px 0;
+`
+
 const Button = styled.button`
     min-width: 250px;
     min-height: 75px;
@@ -27,7 +32,7 @@ const Button = styled.button`
     color: ${props => props.theme.colors.lightashgray};
     font-size: 32px;
     border-radius: 50px;
-    border: none;
+    border: 2px solid ${props => props.theme.colors.mediumashgray};
     margin: 8px;
 
     :hover {
@@ -38,6 +43,12 @@ const Button = styled.button`
         outline: none;
     }
 
+`
+
+const EventBlock = styled.div`
+    border: 1px solid ${props => props.theme.colors.mediumashgray};
+    border-radius: 10px;
+    padding: 10px;
 `
 
 const SendMatchEvent = (
@@ -55,14 +66,14 @@ const MatchEventEntry = (props: {
     match: Match,
     reporterId: string
 }) => {
-    // TODO: This is horrible, buuuuut in the interest of time...
+    // TODO: This method of storing the events is horrible, buuuuut in the interest of time...
     const [events, setEvents] = React.useState<MatchEvent[]>(props.match.events)
     return (
         <Wrapper>
             <Row>
                 {[props.match.player1, props.match.player2].map(p => (
                     <Column key={p.id}>
-                        <div>{p.name}</div>
+                        <Subheading>{p.name}</Subheading>
                         <Button onClick={() => SendMatchEvent(props.match.id, MatchEventType.Serve, p.id, props.reporterId, setEvents)}>Serve</Button>
                         <Button onClick={() => SendMatchEvent(props.match.id, MatchEventType.Fault, p.id, props.reporterId, setEvents)}>Fault</Button>
                         <Button onClick={() => SendMatchEvent(props.match.id, MatchEventType.Let, p.id, props.reporterId, setEvents)}>Let</Button>
@@ -73,10 +84,13 @@ const MatchEventEntry = (props: {
             </Row>
             <Row>
                 <Column>
+                    <Subheading>Recorded events (latest first)</Subheading>
                     {events.slice(0).reverse().map((e, i) => (
-                        <div key={e.id}>
-                            {events.length - i} {MatchEventType[e.type]}
-                        </div>
+                        <EventBlock key={e.id}>
+                            <div>{events.length - i}. {MatchEventType[e.type]}</div>
+                            <div>by {e.context}</div>
+                            <div>Recorded by {e.reporterId}</div>
+                        </EventBlock>
                     ))}
                 </Column>
             </Row>
