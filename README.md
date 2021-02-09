@@ -9,6 +9,7 @@ I time-boxed myself for this project to one evening, and there is still an infin
 - A myriad of UX problems
 - A login / signup system
 - Logging requests
+- Current implementation serializes the models straight to the view. Obviously this is awful design and we should be converting things to DTOs instead.
 
 Ultimately, while it's still very bare-bones I'm pretty happy with what I achieved in one evening.
 
