@@ -3,6 +3,19 @@ import styled from 'styled-components'
 import MatchesContext from '../hooks/MatchesProvider'
 import Match from '../types/match.interface'
 
+const MatchBlockWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 50px;
+    margin: 15px 0;
+
+    background-color: ${props => props.theme.colors.blackcoffee};
+    color: ${props => props.theme.colors.lightashgray};
+    border: 2px solid ${props => props.theme.colors.mediumashgray};
+    border-radius: 50px;
+`
+
 const MatchTitle = styled.h2`
     padding: 0;
     margin: 0;
@@ -19,10 +32,11 @@ const MatchBlock = (props: {
 }) => {
     const date = new Date(props.match.scheduledStartTime)
     return (
-        <div onClick={props.onClick}>
+        <MatchBlockWrapper onClick={props.onClick}>
             <MatchTitle>{props.match.player1.name} vs {props.match.player2.name}</MatchTitle>
             <MatchSubtitle>{date.toLocaleDateString()} {date.toLocaleTimeString()} | Best of {props.match.numGames}</MatchSubtitle>
-        </div>
+            <MatchSubtitle>{props.match.events.length} events recorded</MatchSubtitle>
+        </MatchBlockWrapper>
     )
 }
 
