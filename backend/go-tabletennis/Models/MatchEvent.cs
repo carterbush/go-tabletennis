@@ -23,5 +23,6 @@ namespace go_tabletennis.Models
         public Guid Id { get; set; }
         public EventType Type { get; set; }
         public Guid? Context { get; set; }
+        public Guid ReporterId { get; set; }
     }
 }

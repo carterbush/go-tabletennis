@@ -62,7 +62,6 @@ namespace go_tabletennis
                 Player2 = player2,
                 NumGames = numGames,
                 Events = new List<MatchEvent>(),
-                ReporterId = null
             };
             return id;
         }

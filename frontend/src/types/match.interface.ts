@@ -8,5 +8,4 @@ export default interface Match {
     player2: Player,
     numGames: number,
     events: MatchEvent[],
-    reporterId: string | null
 }

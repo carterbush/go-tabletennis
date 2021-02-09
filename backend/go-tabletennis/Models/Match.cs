@@ -13,7 +13,5 @@ namespace go_tabletennis.Models
         public Player Player2 { get; set; }
         public int NumGames { get; set; }
         public List<MatchEvent> Events { get; set; }
-
-        public Guid? ReporterId { get; set; }
     }
 }
