@@ -6,6 +6,23 @@ import MatchEventEntry from './MatchEventEntry'
 import ReportersContext from '../hooks/ReportersProvider'
 import MatchesContext from '../hooks/MatchesProvider'
 
+const BackButton = styled.button`
+    background-color: ${props => props.theme.colors.blackcoffee};
+    color: ${props => props.theme.colors.lightashgray};
+    font-size: 32px;
+    border-radius: 50px;
+    border: none;
+    margin: 8px;
+
+    :hover {
+        background-color: ${props => props.theme.colors.dimgray};
+    }
+
+    :focus {
+        outline: none;
+    }
+`
+
 const Wrapper = styled.div`
     width: 100vw;
     height: 100vh;
@@ -39,12 +56,14 @@ const Screen = () => {
     } else if (!selectedMatchId) {
         childComponent =
             <>
+                <BackButton onClick={() => setSelectedReporterId('')}>Back</BackButton>
                 <Prompt>Welcome, {reporterName}. Which match would you like to record?</Prompt>
                 <MatchesList selectedMatchId={selectedMatchId} onSelectMatchId={setSelectedMatchId}/>
             </>
     } else if (match !== null) {
         childComponent = 
             <>
+                <BackButton onClick={() => setSelectedMatchId('')}>Back</BackButton>
                 <Prompt>Okay, {reporterName}. Let's do this!</Prompt>
                 <MatchEventEntry match={match} reporterId={selectedReporterId} />
             </>
