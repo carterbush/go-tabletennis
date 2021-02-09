@@ -10,6 +10,7 @@ I time-boxed myself for this project to one evening, and there is still an infin
 - A login / signup system
 - Logging requests
 - Current implementation serializes the models straight to the view. Obviously this is awful design and we should be converting things to DTOs instead.
+- Event validation. We should be simulating the game on the backend to make sure that the event sequence makes sense and direct attention to sequences that don't.
 
 Ultimately, while it's still very bare-bones I'm pretty happy with what I achieved in one evening.
 
