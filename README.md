@@ -11,6 +11,7 @@ I time-boxed myself for this project to one evening, and there is still an infin
 - Logging requests
 - Current implementation serializes the models straight to the view. Obviously this is awful design and we should be converting things to DTOs instead.
 - Event validation. We should be simulating the game on the backend to make sure that the event sequence makes sense and direct attention to sequences that don't.
+- Error handling. There's a lot trust at the moment in what the front end is expecting to get and what the back end is expecting to recieve. Obviously not very defensive...
 
 Ultimately, while it's still very bare-bones I'm pretty happy with what I achieved in one evening.
 
