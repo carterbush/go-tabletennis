@@ -7,6 +7,7 @@ import ReportersContext from '../hooks/ReportersProvider'
 import MatchesContext from '../hooks/MatchesProvider'
 
 const BackButton = styled.button`
+    align-self: start;
     background-color: ${props => props.theme.colors.blackcoffee};
     color: ${props => props.theme.colors.lightashgray};
     font-size: 32px;
@@ -24,6 +25,9 @@ const BackButton = styled.button`
 `
 
 const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100vw;
     height: 100vh;
     background-color: ${props => props.theme.colors.grayweb};
