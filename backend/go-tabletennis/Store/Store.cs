@@ -10,7 +10,7 @@ namespace go_tabletennis
     {
         public IEnumerable<Match> GetAllMatches();
         public IEnumerable<Reporter> GetAllReporters();
-        public Match GetMatch(Guid id);
+        public bool TryGetMatch(Guid id, out Match match);
     }
 
     public class Store : IStore
@@ -51,7 +51,7 @@ namespace go_tabletennis
             throw new NotImplementedException();
         }
 
-        public Match GetMatch(Guid id)
+        public bool TryGetMatch(Guid id, out Match match)
         {
             throw new NotImplementedException();
         }
