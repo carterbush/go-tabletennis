@@ -6,6 +6,12 @@ import MatchEvent, { MatchEventType } from '../types/matchEvent.interface'
 
 const Wrapper = styled.div`
     display: flex;
+    flex-direction: column;
+`
+
+const Row = styled.div`
+    display: flex;
+    justify-content: center;
 `
 
 const Column = styled.div`
@@ -53,16 +59,27 @@ const MatchEventEntry = (props: {
     const [events, setEvents] = React.useState<MatchEvent[]>(props.match.events)
     return (
         <Wrapper>
-            {[props.match.player1, props.match.player2].map(p => (
-                <Column key={p.id}>
-                    <div>{p.name}</div>
-                    <Button onClick={() => SendMatchEvent(props.match.id, MatchEventType.Serve, p.id, props.reporterId, setEvents)}>Serve</Button>
-                    <Button onClick={() => SendMatchEvent(props.match.id, MatchEventType.Fault, p.id, props.reporterId, setEvents)}>Fault</Button>
-                    <Button onClick={() => SendMatchEvent(props.match.id, MatchEventType.Let, p.id, props.reporterId, setEvents)}>Let</Button>
-                    <Button onClick={() => SendMatchEvent(props.match.id, MatchEventType.Foul, p.id, props.reporterId, setEvents)}>Foul</Button>
-                    <Button onClick={() => SendMatchEvent(props.match.id, MatchEventType.PointScored, p.id, props.reporterId, setEvents)}>Point Scored</Button>
+            <Row>
+                {[props.match.player1, props.match.player2].map(p => (
+                    <Column key={p.id}>
+                        <div>{p.name}</div>
+                        <Button onClick={() => SendMatchEvent(props.match.id, MatchEventType.Serve, p.id, props.reporterId, setEvents)}>Serve</Button>
+                        <Button onClick={() => SendMatchEvent(props.match.id, MatchEventType.Fault, p.id, props.reporterId, setEvents)}>Fault</Button>
+                        <Button onClick={() => SendMatchEvent(props.match.id, MatchEventType.Let, p.id, props.reporterId, setEvents)}>Let</Button>
+                        <Button onClick={() => SendMatchEvent(props.match.id, MatchEventType.Foul, p.id, props.reporterId, setEvents)}>Foul</Button>
+                        <Button onClick={() => SendMatchEvent(props.match.id, MatchEventType.PointScored, p.id, props.reporterId, setEvents)}>Point Scored</Button>
+                    </Column>
+                ))}
+            </Row>
+            <Row>
+                <Column>
+                    {events.slice(0).reverse().map((e, i) => (
+                        <div key={e.id}>
+                            {events.length - i} {MatchEventType[e.type]}
+                        </div>
+                    ))}
                 </Column>
-            ))}
+            </Row>
         </Wrapper>
     )
 }
