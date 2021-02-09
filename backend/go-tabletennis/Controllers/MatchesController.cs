@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using go_tabletennis;
 using go_tabletennis.Models;
+using go_tabletennis.Requests;
 
 namespace go_tabletennis.Controllers
 {
@@ -26,6 +27,28 @@ namespace go_tabletennis.Controllers
             {
                 return NotFound();
             }
+
+            return match;
+        }
+
+        [HttpPost]
+        [Route("{matchId:guid}/event")]
+        public ActionResult<Match> PostMatchEvent(Guid matchId, PostMatchEventRequest e)
+        {
+            if (!Program.Store.TryGetMatch(matchId, out var match))
+            {
+                return NotFound();
+            }
+
+            // TODO: Reporter/context guids aren't validated
+
+            match.Events.Add(new MatchEvent()
+            {
+                Id = Guid.NewGuid(),
+                Type = e.Type,
+                Context = e.Context,
+                ReporterId = e.ReporterId,
+            });
 
             return match;
         }

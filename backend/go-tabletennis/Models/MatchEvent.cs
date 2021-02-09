@@ -7,7 +7,7 @@ namespace go_tabletennis.Models
 {
     public class MatchEvent
     {
-        public enum EventType
+        public enum EventType : int
         {
             MatchStart,
             GameStart,
