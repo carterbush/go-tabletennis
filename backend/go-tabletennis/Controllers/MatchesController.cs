@@ -1,0 +1,33 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using go_tabletennis;
+using go_tabletennis.Models;
+
+namespace go_tabletennis.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class MatchesController : ControllerBase
+    {
+        [HttpGet]
+        public IEnumerable<Match> GetMatches()
+        {
+            return Program.Store.GetAllMatches();
+        }
+
+        [HttpGet]
+        [Route("{id:guid}")]
+        public ActionResult<Match> GetMatch(Guid id)
+        {
+            if (!Program.Store.TryGetMatch(id, out var match))
+            {
+                return NotFound();
+            }
+
+            return match;
+        }
+    }
+}

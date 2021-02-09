@@ -5,11 +5,5 @@
     <RootNamespace>go_tabletennis</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-    <Folder Include="Store\" />
-  </ItemGroup>
-
 
 </Project>
