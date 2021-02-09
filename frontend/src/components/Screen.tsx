@@ -46,7 +46,7 @@ const Screen = () => {
         childComponent = 
             <>
                 <Prompt>Okay, {reporterName}. Let's do this!</Prompt>
-                <MatchEventEntry match={match} />
+                <MatchEventEntry match={match} reporterId={selectedReporterId} />
             </>
     } else {
         childComponent = <Prompt>Something has gone terribly wrong :(</Prompt>

@@ -8,6 +8,9 @@ const Api = (
     method,
     mode: 'cors',
     body: !!data ? JSON.stringify(data) : null,
+    headers: {
+        'Content-Type': 'application/json'
+    }
 })
 
 export default Api
