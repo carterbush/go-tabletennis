@@ -41,20 +41,11 @@ namespace go_tabletennis
             return store;
         }
 
-        public IEnumerable<Match> GetAllMatches()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<Match> GetAllMatches() => this.Matches.Values;
 
-        public IEnumerable<Reporter> GetAllReporters()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<Reporter> GetAllReporters() => this.Reporters.Values;
 
-        public bool TryGetMatch(Guid id, out Match match)
-        {
-            throw new NotImplementedException();
-        }
+        public bool TryGetMatch(Guid id, out Match match) => this.Matches.TryGetValue(id, out match);
 
         private Guid CreateMatch(DateTime startTime, Guid p1, Guid p2, int numGames)
         {
